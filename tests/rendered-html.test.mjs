@@ -21,8 +21,8 @@ test("server-renders the Mentor competition quiz home page", async () => {
   assert.match(html, /<title>第十届曼托杯隆胸咨询与测量大赛题库<\/title>/);
   assert.match(html, /219/);
   assert.match(html, /选择题型/);
-  assert.match(html, /下皱襞术式/);
-  assert.match(html, /腋窝内窥镜/);
+  assert.doesNotMatch(html, /选择专题/);
+  assert.doesNotMatch(html, /2(?:<!-- -->)?个术式专题/);
   assert.match(html, /mentor-logo\.png/);
   assert.match(html, /MIT 开源 · 下载网站源码/);
   assert.match(html, /mentor-cup-quiz-source\.zip/);

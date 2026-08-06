@@ -32,7 +32,6 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const SOURCE_URL = process.env.NEXT_PUBLIC_SOURCE_URL || `${BASE_PATH}/mentor-cup-quiz-source.zip`;
 const assetUrl = (path: string) => `${BASE_PATH}${path}`;
 const typeOptions: TypeFilter[] = ["全部题型", "判断题", "单选题", "多选题", "填空题"];
-const topicOptions: TopicFilter[] = ["全部题目", "下皱襞术式", "腋窝内窥镜"];
 const amountOptions = [10, 20, 0];
 
 function shuffle<T>(items: T[]) {
@@ -78,7 +77,7 @@ function isCorrect(question: Question, value: AnswerValue) {
 export default function Home() {
   const [screen, setScreen] = useState<Screen>("home");
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("全部题型");
-  const [topicFilter, setTopicFilter] = useState<TopicFilter>("全部题目");
+  const topicFilter: TopicFilter = "全部题目";
   const [amount, setAmount] = useState(10);
   const [quiz, setQuiz] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
@@ -319,15 +318,12 @@ export default function Home() {
         <p className="eyebrow">MENTOR CUP · 第十届</p>
         <h1>第十届曼托杯隆胸咨询与测量大赛题库</h1>
         <p className="hero-note">从题型和专题中自由组合，开始一次专注练习</p>
-        <div className="library-counts"><span><strong>219</strong>道精选题目</span><i /><span><strong>4</strong>种题型</span><i /><span><strong>2</strong>个术式专题</span></div>
+        <div className="library-counts"><span><strong>219</strong>道精选题目</span><i /><span><strong>4</strong>种题型</span></div>
       </section>
 
       <section className="setup-card">
         <div className="setup-section"><div className="section-title"><span>01</span><div><h2>选择题型</h2><p>选择一种题型，或混合练习全部题型</p></div></div>
           <div className="choice-grid type-grid">{typeOptions.map((type) => <button key={type} className={typeFilter === type ? "active" : ""} onClick={() => setTypeFilter(type)}>{type}</button>)}</div>
-        </div>
-        <div className="setup-section"><div className="section-title"><span>02</span><div><h2>选择专题</h2><p>聚焦术式知识，或练习题库全部内容</p></div></div>
-          <div className="choice-grid topic-grid">{topicOptions.map((topic) => <button key={topic} className={topicFilter === topic ? "active" : ""} onClick={() => setTopicFilter(topic)}>{topic}</button>)}</div>
         </div>
         <div className="setup-section"><div className="section-title"><span>03</span><div><h2>本次题量</h2><p>题目将从符合条件的题库中随机抽取</p></div></div>
           <div className="choice-grid amount-grid">{amountOptions.map((value) => <button key={value} className={amount === value ? "active" : ""} onClick={() => setAmount(value)}>{value === 0 ? `全部 ${available.length} 题` : `${Math.min(value, available.length)} 题`}</button>)}</div>
