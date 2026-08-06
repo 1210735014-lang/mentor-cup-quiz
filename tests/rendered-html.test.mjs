@@ -38,6 +38,8 @@ test("includes the complete four-type question bank and brand assets", async () 
   assert.equal(count(/"type": "单选题"/g), 119);
   assert.equal(count(/"type": "多选题"/g), 19);
   assert.equal(count(/"type": "填空题"/g), 44);
+  assert.match(source, /"question": "双平面技术的优点不包括？（）"[\s\S]*?"假体异位率较低"/);
+  assert.doesNotMatch(source, /假体异味率较低/);
   await access(new URL("../public/mentor-logo.png", import.meta.url));
   await access(new URL("../public/og.png", import.meta.url));
   await access(new URL("../public/mentor-cup-quiz-source.zip", import.meta.url));
