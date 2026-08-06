@@ -1608,7 +1608,7 @@ export const questions: Question[] = [
     "options": [
       "下皱襞形态更为自然",
       "包膜挛缩率低",
-      "假体异位率较低",
+      "假体异味率较低",
       "适合所有患者"
     ],
     "answers": [
